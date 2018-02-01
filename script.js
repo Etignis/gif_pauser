@@ -69,11 +69,13 @@ function start_gif_pauser(){
 		}
 		for(let i=0; i<aGifs.length; i++)
 			aGifs[i].setAttribute('data-paused-gif', i);
+			if(aGifs[i].complete) {
+			set_canvas(aGifs[i], i);  
+			}
 			aGifs[i].onload = function (i) {
-			set_canvas(aGifs[i], i);   
-		};
-
-		})
+				set_canvas(aGifs[i], i);   
+			};
+		}
 	}
 	init_gif_pauser();
 }
